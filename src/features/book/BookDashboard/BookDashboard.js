@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Button } from 'semantic-ui-react';
 import BookList from '../BookList/BookList';
 import BookForm from '../BookForm/BookForm';
+import cuid from 'cuid';
 
 const books = [
   {
@@ -127,8 +128,17 @@ class BookDashboard extends Component {
   }
 
   handleIsOpenToggle = () => {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen
+    this.setState(({isOpen}) => ({
+      isOpen: !isOpen
+    }))
+  }
+
+  handleCreateBook = (newBook) => {
+    newBook.id = cuid();
+    newBook.photoUrl = '/assets/no-cover.png';
+    this.setState(({books}) => ({
+      books: [...books, newBook],
+      isOpen: false
     }))
   }
 
@@ -144,7 +154,11 @@ class BookDashboard extends Component {
         <Grid.Column width={6}>
           <Button onClick={this.handleIsOpenToggle} positive content="Create Book" />
           {
-            isOpen && <BookForm closeForm={this.handleIsOpenToggle} />
+            isOpen && (
+              <BookForm
+                createBook={this.handleCreateBook}
+                closeForm={this.handleIsOpenToggle} />
+            )
           }          
         </Grid.Column>
       </Grid>

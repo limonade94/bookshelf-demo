@@ -15,7 +15,7 @@ class BookListItem extends Component {
               <Item.Content>
                 <Item.Image size="small" src={book.photoUrl} />       
                 <Button color="teal" content="Learn more" />
-                <Button color="red" content="Delete" />
+                <Button color="grey" content="Delete" />
               </Item.Content>                      
               <Item.Content>
                 <Item.Header as="a">{book.title}</Item.Header>
@@ -32,7 +32,7 @@ class BookListItem extends Component {
                   {book.page} pages
                 </Item.Description>
                 <Item.Description>
-                  <Icon name="react" />
+                  <Icon name={book.category === 'React' ? 'react' : 'js'} />
                   {book.category}
                 </Item.Description>
                 <Item.Description>
@@ -48,7 +48,7 @@ class BookListItem extends Component {
         <Segment>
           <List horizontal>
             {
-              book.relatedItem.map(item => (
+              book.relatedItem && book.relatedItem.map(item => (
                 <BookListRelated key={item.title} item={item} />
               ))
             }          
