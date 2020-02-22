@@ -1,0 +1,31 @@
+main{
+  // background-color: pink;
+  padding: 96px 16px 0 16px;
+}
+
+.ui.segments > .segment{
+  border: none;
+}
+
+.ui.items > .item > .content > .description.last{
+  margin-bottom: 20px;
+}
+
+.ui.button{
+  padding: 0.3em 0.6em 0.5em 0.6em;
+  width: auto;
+  border-radius: 0;
+}
+
+.ui.items>.item .content img{
+  width: 100%;
+  margin-bottom: 2px;
+}
+
+.ui.items > .item > .content > a.header{
+  margin-top: 5px;
+}
+
+// .ui.items > .item > .content{
+//   margin-right: 1em;;
+// }

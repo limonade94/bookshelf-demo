@@ -1,11 +1,17 @@
 import React from 'react';
+import BookDashboard from '../../features/book/BookDashboard/BookDashboard';
+import NavBar from '../../features/nav/NavBar/NavBar';
+import { Container } from "semantic-ui-react";
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <h1>Home</h1>
-      </div>
+      <>
+        <NavBar />
+        <Container as="main">          
+          <BookDashboard />
+        </Container>
+      </>
     );    
   }
 }
