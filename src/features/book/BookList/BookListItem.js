@@ -5,7 +5,7 @@ import BookListRelated from './BookListRelated';
 class BookListItem extends Component {
   render() {
 
-    const { book } = this.props;
+    const { book, selectBook, deleteBook} = this.props;
 
     return (
       <Segment.Group>
@@ -14,8 +14,16 @@ class BookListItem extends Component {
             <Item>
               <Item.Content>
                 <Item.Image size="small" src={book.photoUrl} />       
-                <Button color="teal" content="Learn more" />
-                <Button color="grey" content="Delete" />
+                <Button
+                  onClick={() => selectBook(book)}
+                  color="teal" 
+                  content="Learn more" 
+                />
+                <Button 
+                  onClick={() => deleteBook(book.id)}
+                  color="grey" 
+                  content="Delete"
+                />
               </Item.Content>                      
               <Item.Content>
                 <Item.Header as="a">{book.title}</Item.Header>

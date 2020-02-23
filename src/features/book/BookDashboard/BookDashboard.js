@@ -3,6 +3,7 @@ import { Grid, Button } from 'semantic-ui-react';
 import BookList from '../BookList/BookList';
 import BookForm from '../BookForm/BookForm';
 import cuid from 'cuid';
+import { textChangeRangeIsUnchanged } from 'typescript';
 
 const books = [
   {
@@ -48,37 +49,37 @@ const books = [
   },
   {
     id: 2,
-    title: 'React Projects',
-    author: 'Roy Derks',
-    aboutAuthor: 'Roy Derks is a serial start-up CTO, conference speaker, and developer from Amsterdam. He has been actively programming since he was a teenager, starting as a self-taught programmer using online tutorials and books. At the age of 14, he founded his first start-up, a peer-to-peer platform where users could trade DVDs with other users for free. ',
+    title: 'Clean Code in JavaScript',
+    author: 'James Padolsey',
+    aboutAuthor: 'James Padolsey is a passionate JavaScript and UI engineer with over 12 years\' experience. James began his journey into JavaScript as a teenager, teaching himself how to build websites for school and small freelance projects. In the early years, he was a prolific blogger, sharing his unique solutions to common problems in the domains of jQuery, JavaScript, and the DOM. He later contributed to the jQuery library itself and authored a chapter within the jQuery Cookbook published by O\'Reilly Media. Over subsequent years, James has been exposed to many unique software projects in his employment at Stripe, Twitter, and Facebook, informing his philosophy on what clean coding truly means in the ever-changing ecosystem of JavaScript.',
 
     publisher: 'PacktPub',
-    date: '2019-12-20',
-    category: 'React',
+    date: '2020-01-20',
+    category: 'JS',
     type: "book",
-    page: 474,
-    isbn: 9781789954937,
+    page: 548,
+    isbn: 9781789957648,
 
     decorationImg: '/assets/covers/react-project.png',
 
-    photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/9/7/9781789954937-original.png',
+    photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/9/7/9781789957648-original.png',
 
-    accept: 'Build cross-platform applications of varying complexity for the web, mobile, and VR devices using React tooling',
+    accept: 'Get the most out of JavaScript for building web applications through a series of patterns, techniques, and case studies for clean coding',
 
-    description: 'React Projects is your guide to learning React development by using modern development patterns and integrating React with powerful web tools such as GraphQL, Expo, and React 360. You will start building a eal-world project right from the first chapter and get hands on with developing scalable applications as you advance to building more complex projects. Throughout the book, you will use the latest versions of React and React Native to explore features such as Higher Order Components(HOC), Context, and Hooks on multiple platforms, which will help you build full stack web and mobile applications efficiently.Finally, you will delve into unit testing with Jest to build test-driven apps. By the end of this React book, you will have developed the skills necessary to start building scalable React apps across web and mobile platforms.',
+    description: 'The book starts with popular clean-coding principles such as SOLID, and the Law of Demeter (LoD), along with highlighting the enemies of writing clean code such as cargo culting and over-management. You’ll then delve into JavaScript, understanding the more complex aspects of the language. Next, you’ll create meaningful abstractions using design patterns, such as the Class Pattern and the Revealing Module Pattern. You’ll explore real-world challenges such as DOM reconciliation, state management, dependency management, and security, both within browser and server environments. Later, you’ll cover tooling and testing methodologies and the importance of documenting code. Finally, the book will focus on advocacy and good communication for improving code cleanliness within teams or workplaces, along with covering a case study for clean coding.',
 
     relatedItem: [
       {
-        title: 'React Design Patterns and Best Practices - Second Edition',
-        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/b/1/b11439_mockupcover_0.png'
+        title: 'Professional JavaScript',
+        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/aefcd4d8d5c59ba860378cf3cd2e94da/9/7/9781838820213-original.png'
       },
       {
-        title: 'Full-Stack React Project',
-        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/b/0/b09550_cover.png'
+        title: 'Mastering JS Functional Programming - 2nd Ed.',
+        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/aefcd4d8d5c59ba860378cf3cd2e94da/9/7/9781839213069-original.png'
       },
       {
-        title: 'React Material-UI Cookbook',
-        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/b/1/b12040_mockupcover_0.png'
+        title: 'Advanced JavaScript',
+        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/aefcd4d8d5c59ba860378cf3cd2e94da/1/2/12665_cover.png'
       }
     ]
   },
@@ -124,13 +125,27 @@ class BookDashboard extends Component {
 
   state = {
     books: books,
-    isOpen: false
+    isOpen: false,
+    selectedBook: null
   }
 
-  handleIsOpenToggle = () => {
-    this.setState(({isOpen}) => ({
-      isOpen: !isOpen
-    }))
+  // handleIsOpenToggle = () => {
+  //   this.setState(({isOpen}) => ({
+  //     isOpen: !isOpen
+  //   }))
+  // }
+
+  handleFormOpen = () => {
+    this.setState({
+      isOpen: true,
+      selectedBook: null
+    })
+  }
+
+  handleFormClose = () => {
+    this.setState({
+      isOpen: false
+    })
   }
 
   handleCreateBook = (newBook) => {
@@ -142,22 +157,59 @@ class BookDashboard extends Component {
     }))
   }
 
+  handleSelectBook = (book) => {
+    this.setState({
+      selectedBook: book,
+      isOpen: true
+    })
+  }
+
+  handleUpdateBook = (updatedbook) => {
+    this.setState(({books}) => ({
+      books: books.map(book => {
+        if (book.id === updatedbook.id) {
+          return {
+            ...updatedbook
+          }
+        } else {
+          return book;
+        }
+      }),
+      isOpen: false,
+      selectedBook: null
+    }))
+  }
+
+  handleDeleteBook = (id) => {
+    this.setState(({books}) => ({
+      books: books.filter(e => e.id !==id)
+    }))
+  }
+
+
   render() {
 
-    const { books, isOpen } = this.state;
+    const { books, isOpen, selectedBook } = this.state;
 
     return (
       <Grid>
         <Grid.Column width={10}>
-          <BookList books={books} />
+          <BookList 
+            books={books} 
+            selectBook={this.handleSelectBook} 
+            deleteBook={this.handleDeleteBook}
+          />
         </Grid.Column>
         <Grid.Column width={6}>
-          <Button onClick={this.handleIsOpenToggle} positive content="Create Book" />
+          <Button onClick={this.handleFormOpen} positive content="Create Book" />
           {
             isOpen && (
               <BookForm
+                key={selectedBook ? selectedBook.id : null}
+                updateBook={this.handleUpdateBook}
+                selectedBook={selectedBook}
                 createBook={this.handleCreateBook}
-                closeForm={this.handleIsOpenToggle} />
+                closeForm={this.handleFormClose} />
             )
           }          
         </Grid.Column>

@@ -11,12 +11,24 @@ class BookForm extends Component {
     category: '',
     isbn: 0,
     accept: '',
-    cover: '/assets/no-cover.png'
+    photoUrl: '/assets/no-cover.png'
+  }
+
+  componentDidMount() {
+    if (this.props.selectedBook !== null) {
+      this.setState({
+        ...this.props.selectedBook
+      })
+    }
   }
 
   handleFormSubmit = (evt) => {
     evt.preventDefault();
-    this.props.createBook(this.state);
+    if (this.state.id) {
+      this.props.updateBook(this.state);
+    } else {
+      this.props.createBook(this.state);      
+    }
   }
 
   handleInputChange = ({target: {name, value}}) => {
@@ -28,7 +40,7 @@ class BookForm extends Component {
   render() {
 
     const { closeForm } = this.props;
-    const { title, author, date, page, accept, category, isbn, cover } = this.state;
+    const { title, author, date, page, accept, category, isbn, photoUrl } = this.state;
 
     return (
       <Segment>
@@ -107,10 +119,9 @@ class BookForm extends Component {
             <label>Photo Url</label>
             <input
               type="text"
-              name="cover"
-              value={cover}
+              name="photoUrl"
+              value={photoUrl}
               onChange={this.handleInputChange}
-              placeholder="Cover" 
             />
           </Form.Field>
           <Button positive type="submit">
