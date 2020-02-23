@@ -3,52 +3,10 @@ import { Grid, Button } from 'semantic-ui-react';
 import BookList from '../BookList/BookList';
 import BookForm from '../BookForm/BookForm';
 import cuid from 'cuid';
-import { textChangeRangeIsUnchanged } from 'typescript';
 
 const books = [
   {
-    id: 1,  
-    title: 'Full-Stack React Project',    
-    author: 'Shama Hoque',    
-    aboutAuthor: 'Shama Hoque has 8 years of experience as a software developer and mentor, with a Master’s in Software Engineering from Carnegie Mellon University. From Java programming to full-stack development with JavaScript, the applications she has worked on include national Olympiad registration websites, universally accessible widgets, video conferencing apps, and medical 3D reconstruction software.',
-
-    publisher: 'PacktPub',
-    
-    date: '2018-01-08',
-    
-    category: 'React',
-    
-    type: "book",
-    
-    page: 470,
-    
-    isbn: 9781788835534,
-    
-    decorationImg: '/assets/covers/react-project.png',
-    
-    accept: 'Unleash the power of MERN stack by building diverse web applications using React, Node.js, Express, and MongoDB',
-    
-    description: 'The benefits of using a full JavaScript stack for web development are undeniable, especially when robust and widely adopted technologies such as React, Node, and Express and are available. Combining the power of React with industry-tested, server-side technologies, such as Node, Express, and MongoDB, creates a diverse array of possibilities when developing real-world web applications.',
-    
-    photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/b/0/b09550_cover.png',
-    
-    relatedItem: [
-      {
-        title: 'React Design Patterns and Best Practices - 2nd Ed.',
-        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/b/1/b11439_mockupcover_0.png'
-      },
-      {
-        title: 'React Projects',
-        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/9/7/9781789954937-original.png'
-      },
-      {
-        title: 'React Material-UI Cookbook',
-        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/b/1/b12040_mockupcover_0.png'
-      }
-    ]
-  },
-  {
-    id: 2,
+    id: 1,
     title: 'Clean Code in JavaScript',
     author: 'James Padolsey',
     aboutAuthor: 'James Padolsey is a passionate JavaScript and UI engineer with over 12 years\' experience. James began his journey into JavaScript as a teenager, teaching himself how to build websites for school and small freelance projects. In the early years, he was a prolific blogger, sharing his unique solutions to common problems in the domains of jQuery, JavaScript, and the DOM. He later contributed to the jQuery library itself and authored a chapter within the jQuery Cookbook published by O\'Reilly Media. Over subsequent years, James has been exposed to many unique software projects in his employment at Stripe, Twitter, and Facebook, informing his philosophy on what clean coding truly means in the ever-changing ecosystem of JavaScript.',
@@ -84,38 +42,38 @@ const books = [
     ]
   },
   {
-    id: 3,
-    title: 'React Material-UI Cookbook',
-    author: 'Adam Boduch',
-    aboutAuthor: 'Adam Boduch has been involved with large-scale JavaScript development for nearly 10 years. Before moving to the frontend, he worked on several large-scale cloud computing products using Python and Linux. No stranger to complexity, Adam has practical experience with real-world software systems and the scaling challenges they pose. He is the author of several JavaScript books, including React and React Native, by Packt Publishing and is passionate about innovative user experiences and high performance.',
+    id: 2,
+    title: 'Learn React Hooks',
+    author: 'Daniel Bugl',
+    aboutAuthor: 'Daniel Bugl is a developer, product designer, and entrepreneur focusing on web technologies. He has a Bachelor of Science degree in business informatics and information systems and is now studying data science at the Vienna University of Technology (TU Wien). He is a contributor to many open source projects and a member of the React community. He also founded and runs his own hardware/software start-up, TouchLay, which helps other companies present their products and services. At his company, he constantly works with web technologies, particularly making use of React and React Hooks.',
 
     publisher: 'PacktPub',
-    date: '2019-03-30',
-    category: 'React',
+    date: '20219-10-18',
+    category: 'JS',
     type: "book",
-    page: 534,
-    isbn: 9781789615227,
+    page: 548,
+    isbn: 9781838641443,
 
     decorationImg: '/assets/covers/react-project.png',
 
-    photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/b/1/b12040_mockupcover_0.png',
+    photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/9/7/9781838641443-original.jpeg',
 
-    accept: 'Develop modern-day applications by implementing Material Design principles in React using Material-UI',
+    accept: 'React Hooks revolutionize how you manage state and effects in your web applications. Toward the concluding chapters, you will learn',
 
-    description: 'Material-UI is a component library for rendering UI elements, using modern best practices from React and Material Design. This book will show you how you can create impressive and captivating modern-day web apps by implementing Material Design considerations. The book is designed to help you use a variety of Material-UI components to enhance UI functionality, along with guiding you through React best practices, and using state, context, and other new React 16.8 features.',
+    description: 'This React book starts by introducing you to React Hooks. You will then get to grips with building a complex UI in React while keeping the code simple and extensible. Next, you will quickly move on to building your first applications with React Hooks. In the next few chapters, the book delves into various Hooks, including the State and Effect Hooks. After covering State Hooks and understanding how to use them, you will focus on the capabilities of Effect Hooks for adding advanced functionality to React apps.',
 
     relatedItem: [
       {
-        title: 'React Design Patterns and Best Practices - Second Edition',
-        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/b/1/b11439_mockupcover_0.png'
+        title: 'Professional JavaScript',
+        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/aefcd4d8d5c59ba860378cf3cd2e94da/9/7/9781838820213-original.png'
       },
       {
-        title: 'React Projects',
-        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/9/7/9781789954937-original.png'
+        title: 'Mastering JS Functional Programming - 2nd Ed.',
+        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/aefcd4d8d5c59ba860378cf3cd2e94da/9/7/9781839213069-original.png'
       },
       {
-        title: 'Full-Stack React Project',
-        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/b/0/b09550_cover.png'
+        title: 'Advanced JavaScript',
+        photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/aefcd4d8d5c59ba860378cf3cd2e94da/1/2/12665_cover.png'
       }
     ]
   }
@@ -192,7 +150,7 @@ class BookDashboard extends Component {
     const { books, isOpen, selectedBook } = this.state;
 
     return (
-      <Grid>
+      <Grid className="outer">
         <Grid.Column width={10}>
           <BookList 
             books={books} 
@@ -201,7 +159,10 @@ class BookDashboard extends Component {
           />
         </Grid.Column>
         <Grid.Column width={6}>
-          <Button onClick={this.handleFormOpen} positive content="Create Book" />
+          <Button
+            className="create-item"
+            onClick={this.handleFormOpen}            
+            content="Create Book" />
           {
             isOpen && (
               <BookForm

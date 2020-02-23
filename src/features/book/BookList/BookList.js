@@ -5,7 +5,7 @@ class BookList extends Component {
   render() {
     const { books, selectBook, deleteBook } = this.props;
     return (
-      <div>
+      <main>
         {books.map(book => (
           <BookListItem 
             key={book.id} 
@@ -14,7 +14,7 @@ class BookList extends Component {
             deleteBook={deleteBook}
           />
         ))}
-      </div>
+      </main>
     )
   }
 }
