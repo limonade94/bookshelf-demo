@@ -25,7 +25,7 @@ class NavBar extends Component {
             <i className="icon book"></i>
             BookShelf
           </Menu.Item>
-          <Menu.Item as={NavLink} to="/books" name="Books" />
+          <Menu.Item as={NavLink} to="/books" exact name="Books" />
           <Menu.Item as={NavLink} to="/people" name="People" />
           <Menu.Item as={NavLink} to="/test" name="Test" />
           <Menu.Item>

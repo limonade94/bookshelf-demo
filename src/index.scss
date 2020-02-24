@@ -15,6 +15,9 @@
   }
 }
 
+.ui.segment.form{
+  margin-top: 120px;
+}
 .flex-container{
   display: flex;
 }
@@ -86,4 +89,14 @@
 
 .ui.items > .item > .content > a.header{
   margin-top: 5px;
+}
+
+/********** Book Details Page styles ***********/
+
+.book-details{
+  header{
+    h2{
+      margin: 0;
+    }
+  }
 }

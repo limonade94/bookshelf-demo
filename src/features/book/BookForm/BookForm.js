@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Segment, Form, Button } from 'semantic-ui-react';
+import { createBook, updateBook } from '../bookActions';
+import cuid from 'cuid';
 
-class BookForm extends Component {
+const mapStateToProps = (state, ownProps) => {
+  const bookId = ownProps.match.params.id;
 
-  state = {
+  let book = {
     title: '',
     author: '',
     date: '',
     page: '',
     category: '',
-    isbn: 0,
+    isbn: '',
     accept: '',
-    photoUrl: '/assets/no-cover.png'
+    photoUrl: ''
   }
+
+  if (bookId && state.books.length > 0) {
+    book = state.books.filter(book => book.id === bookId)[0]
+  }
+
+  return {
+    book
+  }
+}
+
+const mapDispatchToProps = {
+  createBook,
+  updateBook
+}
+
+class BookForm extends Component {
+
+  state = {...this.props.book};
 
   componentDidMount() {
     if (this.props.selectedBook !== null) {
@@ -26,8 +48,15 @@ class BookForm extends Component {
     evt.preventDefault();
     if (this.state.id) {
       this.props.updateBook(this.state);
+      this.props.history.push(`/books/${this.state.id}`);
     } else {
-      this.props.createBook(this.state);      
+      const newBook = {
+        ...this.state,
+        id: cuid(),
+        photoUrl: '/assets/no-cover.png'
+      }
+      this.props.createBook(newBook);
+      this.props.history.push(`/books`);
     }
   }
 
@@ -37,13 +66,11 @@ class BookForm extends Component {
     })
   }
 
-  render() {
-
-    const { closeForm } = this.props;
+  render() {    
     const { title, author, date, page, accept, category, isbn, photoUrl } = this.state;
 
     return (
-      <Segment>
+      <Segment className="form">
         <Form onSubmit={this.handleFormSubmit}>
           <Form.Field>
             <label>Title</label>
@@ -127,12 +154,12 @@ class BookForm extends Component {
           <Button positive type="submit">
             Submit
           </Button>
-          <Button type="button" onClick={closeForm}>Cancel</Button>
+          <Button type="button" onClick={this.props.history.goBack}>Cancel</Button>
         </Form>
       </Segment>
     )
   }
 }
 
-export default BookForm;
+export default connect(mapStateToProps, mapDispatchToProps)(BookForm);
 

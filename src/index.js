@@ -8,7 +8,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from './app/store/configureStore';
 
 const store = configureStore();
-console.log(store.getState());
 
 const root = document.getElementById('root');
 

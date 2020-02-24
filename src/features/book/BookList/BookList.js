@@ -3,14 +3,13 @@ import BookListItem from './BookListItem';
 
 class BookList extends Component {
   render() {
-    const { books, selectBook, deleteBook } = this.props;
+    const { books, deleteBook } = this.props;
     return (
       <main>
         {books.map(book => (
           <BookListItem 
             key={book.id} 
-            book={book} 
-            selectBook={selectBook} 
+            book={book}
             deleteBook={deleteBook}
           />
         ))}

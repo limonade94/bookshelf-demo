@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Segment, Item, Icon, Button, List } from 'semantic-ui-react';
 import BookListRelated from './BookListRelated';
+import { Link } from 'react-router-dom';
 
 class BookListItem extends Component {
   render() {
 
-    const { book, selectBook, deleteBook} = this.props;
+    const { book, deleteBook } = this.props;
 
     return (
       <Segment.Group>
@@ -15,7 +16,8 @@ class BookListItem extends Component {
               <Item.Content>
                 <Item.Image size="small" src={book.photoUrl} />       
                 <Button
-                  onClick={() => selectBook(book)}
+                  as={Link}
+                  to={`/books/${book.id}`}
                   color="teal" 
                   content="Learn more" 
                 />
