@@ -100,3 +100,64 @@
     }
   }
 }
+
+.book-item{
+  border: 1px solid rgba(34,36,38,.15);
+  border-radius: 3px;
+  margin: 0 0 20px 0;
+  padding: 0.8em;
+
+  img{
+    display: inline-block;
+    width: 170px;
+    max-height: 200px;
+  }
+
+  ul{
+    padding: 0 1em 0 1em;
+
+    li{
+      margin-bottom: 3px;
+
+      .item{
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      &.text{
+        margin: 8px 0;
+        font-style: italic;
+      }
+
+      .more{
+        display: inline-block;
+        background-color: #21ba45;
+        color: white;
+        padding: 0.5em;
+        border-radius: 3px;
+        margin-right: 10px;
+      }
+
+      .delete{
+        display: inline-block;
+        background-color: red;
+        border: 1px solid red;
+        color: white;
+        border-radius: 3px;
+        padding: 0.5em;
+        cursor: pointer;
+
+        &:hover{
+          background-color: transparent;
+          color: red;
+        }
+      }
+    }
+
+    li:first-child{
+      font-size: 1.5em;
+      font-weight: 700;
+      margin: 5px 0 12px 0;
+    }
+  }
+}
