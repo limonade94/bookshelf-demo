@@ -55,7 +55,7 @@ class BookListItem extends Component {
             </Item>
           </Item.Group>
         </Segment> 
-        <Segment>
+        {/* <Segment>
           <List horizontal>
             {
               book.relatedItem && book.relatedItem.map(item => (
@@ -63,7 +63,7 @@ class BookListItem extends Component {
               ))
             }          
           </List>
-        </Segment>
+        </Segment> */}
       </Segment.Group>
     )
   }

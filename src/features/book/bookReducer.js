@@ -85,7 +85,7 @@ const initialState = [
 
     photoUrl: 'https://www.packtpub.com/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/9/7/9781789954937-original.png',
 
-    accept: 'Build cross-platform applications of varying complexity for the web, mobile, and VR devices using React tooling',
+    accept: 'React Projects is your guide to learning React development by using modern development patterns and integrating React Web Tools.',
 
     description: 'React Projects is your guide to learning React development by using modern development patterns and integrating React with powerful web tools such as GraphQL, Expo, and React 360. You\'ll start building a real-world project right from the first chapter and get hands on with developing scalable applications as you advance to building more complex projects.',
 
